@@ -41,7 +41,7 @@ public class DrawingView extends View {
     }
 
     private void setupDrawing(){ //get drawing area setup for interaction
-        brushSize = getResources().getInteger(R.integer.medium_size);
+        brushSize = getResources().getInteger(R.integer.small_size);
         lastBrushSize = brushSize;
         drawPath = new Path();
         drawPaint = new Paint();
@@ -56,9 +56,12 @@ public class DrawingView extends View {
 
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {//view given size
-        super.onSizeChanged(w, h, oldw, oldh);
-        canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+    protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
+        //view given size
+        super.onSizeChanged(width, height, oldWidth, oldHeight);
+
+        // creates a new surface for drawing
+        canvasBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
     }
 
